@@ -23,7 +23,7 @@ jobs:
         pyinstaller --onefile --console --name GDBot gd_bot.py
     
     - name: Upload EXE
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: GDBot
         path: dist/GDBot.exe
