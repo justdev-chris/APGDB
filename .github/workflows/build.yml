@@ -1,0 +1,29 @@
+name: Build EXE
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        pip install pymem pywin32 opencv-python numpy pyinstaller
+    
+    - name: Build EXE
+      run: |
+        pyinstaller --onefile --console --name GDBot gd_bot.py
+    
+    - name: Upload EXE
+      uses: actions/upload-artifact@v3
+      with:
+        name: GDBot
+        path: dist/GDBot.exe
