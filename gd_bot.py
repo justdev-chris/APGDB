@@ -154,7 +154,6 @@ class GeometryDashBot:
         try:
             return struct.unpack('i', self.pm.read_bytes(addr, 4))[0]
         except:
-        except:
             return 0
     
     def read_ptr(self, addr):
